@@ -42,7 +42,6 @@ libphonenumber= {group="com.googlecode.libphonenumber" , name= "libphonenumber",
 phonefield= {group="com.github.ialokim" , name= "android-phone-field", version.ref="phoneField"}
 desugarjdklibs= {group="com.android.tools" , name= "desugar_jdk_libs", version.ref="desugar"}
 
-
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

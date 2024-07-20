@@ -13,11 +13,8 @@
         android:id="@+id/btn_pick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-
         android:gravity="center"
         android:text="@string/label_pick"
-
         android:textSize="20sp" />
 
 
@@ -38,9 +35,8 @@
             android:layout_weight="1"
             app:autoFill="true"
             app:autoFormat="true"
-            app:hint="@string/label_input_phone">
+            app:hint="@string/label_input_phone"/>
 
-        </com.github.ialokim.phonefield.PhoneInputLayout>
 
         <ImageView
             android:id="@+id/btn_paste"

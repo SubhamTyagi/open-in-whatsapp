@@ -6,6 +6,7 @@ import android.content.ClipboardManager
 import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
@@ -24,7 +25,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.github.ialokim.phonefield.PhoneInputLayout
 import com.google.android.material.color.DynamicColors
-import com.google.i18n.phonenumbers.NumberParseException
+
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import io.github.subhamtyagi.openinwhatsapp.prefs.Prefs
 import java.io.UnsupportedEncodingException
@@ -139,6 +140,21 @@ class MainActivity : AppCompatActivity() {
 
         // Set default country and IME options
         mPhoneInput.setDefaultCountry(Prefs(this).lastRegion)
+
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        when (currentNightMode) {
+            Configuration.UI_MODE_NIGHT_YES -> {
+                mPhoneInput.editText.setTextColor(getResources().getColor(android.R.color.white))
+            }
+            Configuration.UI_MODE_NIGHT_NO -> {
+                mPhoneInput.editText.setTextColor(getResources().getColor(android.R.color.black))
+            }
+            Configuration.UI_MODE_NIGHT_UNDEFINED -> {
+                // Night mode is not defined
+            }
+        }
+        //
+
         mPhoneInput.editText.imeOptions = EditorInfo.IME_ACTION_SEND
         mPhoneInput.editText.setImeActionLabel(
             getString(R.string.label_send),
@@ -165,9 +181,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun validate(): String {
-        return if (mPhoneInput.isValid) mPhoneInput.phoneNumberE164 else ""
-    }
+
 
     private fun getShareMSG(): String {
         return try {
@@ -201,10 +215,11 @@ class MainActivity : AppCompatActivity() {
     private fun setNumber(): Boolean {
         hideKeyboard(mPhoneInput)
         mPhoneInput.setError(null)
-        number = validate()
+        number = if (mPhoneInput.isValid) mPhoneInput.phoneNumberE164 else ""
         return if (number == "") {
             mPhoneInput.setError(getString(R.string.label_error_incorrect_phone))
-            false
+            number= mPhoneInput.phoneNumberE164
+            true
         } else {
             storeCountryCode()
             true
@@ -217,7 +232,7 @@ class MainActivity : AppCompatActivity() {
             try {
                 val phoneNumber = phoneUtil.parse(mPhoneInput.phoneNumberE164, "")
                 Prefs(this).lastRegion = phoneUtil.getRegionCodeForNumber(phoneNumber)
-            } catch (e: NumberParseException) {
+            } catch (e: Exception) {
                 //log.e(e, "Failed to store country code. NumberParseException thrown while trying to parse ${mPhoneInput.phoneNumberE164}")
             }
         }
