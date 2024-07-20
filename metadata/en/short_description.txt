@@ -1,1 +1,1 @@
-Open chats in WhatsApp without saving contact to phonebook.
+Open WhatsApp Chat without saving number to Contacts

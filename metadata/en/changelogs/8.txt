@@ -1,0 +1,4 @@
+- fix dark theme issue
+- liberal phone number validation
+- remove unused libs
+- enable minification( less apk size)
