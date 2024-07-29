@@ -1,0 +1,5 @@
+<resources>
+    <string name="phonefield_edittext">phone_edit_text</string>
+    <string name="phonefield_flag_spinner">flag_spinner</string>
+    <string name="phonefield_til_phone">til_phone</string>
+</resources>

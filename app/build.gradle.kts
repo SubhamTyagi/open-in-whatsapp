@@ -21,7 +21,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -40,9 +43,11 @@ android {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
-    implementation (libs.material)
+    implementation(libs.material)
     implementation(libs.appcompat)
     implementation(libs.preference)
     implementation(libs.libphonenumber)
-    implementation(libs.phonefield)
+    //implementation(libs.phonefield)
+    implementation(project(":phone-field"))
+
 }

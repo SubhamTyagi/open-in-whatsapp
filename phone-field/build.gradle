@@ -1,0 +1,46 @@
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
+
+android {
+    compileSdkVersion 34
+    buildToolsVersion "34.0.0"
+    namespace "io.github.subhamtyagi.phone"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 34
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId = 'io.github.subhamtyagi.phone'
+                artifactId = 'android-phone-field'
+                version = '0.2.6'
+                from components.findByName('release')
+            }
+        }
+    }
+}
+
+
+dependencies {
+    implementation libs.appcompat
+    implementation libs.libphonenumber
+    implementation libs.material
+}

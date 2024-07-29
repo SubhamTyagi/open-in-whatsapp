@@ -30,4 +30,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Open In Whatsapp"
 include(":app")
+include(":phone-field")
  
