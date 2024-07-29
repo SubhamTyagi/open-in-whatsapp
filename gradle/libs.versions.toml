@@ -6,7 +6,7 @@ appCompat="1.7.0"
 material = "1.12.0"
 preference="1.2.1"
 libphone="8.11.0"
-phoneField="0.2.3"
+phoneField="0.2.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -14,7 +14,7 @@ appcompat ={group= "androidx.appcompat", name="appcompat", version.ref="appCompa
 material = { module = "com.google.android.material:material", version.ref = "material" }
 preference= {group="androidx.preference" , name= "preference-ktx", version.ref="preference"}
 libphonenumber= {group="com.googlecode.libphonenumber" , name= "libphonenumber", version.ref="libphone"}
-phonefield= {group="com.github.ialokim" , name= "android-phone-field", version.ref="phoneField"}
+phonefield= {group="io.github.subhamtyagi" , name= "phone-lib", version.ref="phoneField"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
